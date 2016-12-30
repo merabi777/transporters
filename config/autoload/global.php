@@ -1,8 +1,9 @@
 <?php
+
 /**
  * Global Configuration Override
  *
- * You can use this file for overridding configuration values from modules, etc.
+ * You can use this file for overriding configuration values from modules, etc.
  * You would place values in here that are agnostic to the environment and not
  * sensitive to security.
  *
@@ -11,19 +12,25 @@
  * file.
  */
 
-return array(
-    'db' => array(
-        'driver' => 'Pdo',
-        'dsn'            => 'mysql:dbname=extjszend;hostname=localhost',
-        'username'       => 'root',
-        'password'       => 'vertrigo',
-        'driver_options' => array(
-            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
-        ),
-    ),
-    'service_manager' => array(
-        'factories' => array(
+use Doctrine\DBAL\Driver\PDOMySql\Driver as PDOMySqlDriver;
+
+return [
+    'doctrine' => [
+        'connection' => [
+            'orm_default' => [
+                'driverClass' => PDOMySqlDriver::class,
+                'params' => [
+                    'host'     => 'mchikvaidze.ge',                    
+                    'user'     => 'mchikvai_trans',
+                    'password' => '6FsZF1ob',
+                    'dbname'   => 'mchikvai_tr',
+                ]
+            ],            
+        ],        
+    ],
+    'service_manager' => [
+        'factories' => [
             'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory',
-        ),
-    ),
-);
+        ],
+    ],
+];

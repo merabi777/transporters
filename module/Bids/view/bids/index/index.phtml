@@ -1,0 +1,11 @@
+<?php
+
+foreach ($users as $item) {
+    print_R($item);
+    echo "<br /><br /><br />";
+}
+foreach ($bids as $item) {
+
+    echo $item->getID()."--".$item->getText()."--".$item->getUser()->getFullName()."<br /><br /><br />";
+}
+?>
