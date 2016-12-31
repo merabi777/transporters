@@ -20,7 +20,7 @@ class IndexController extends AbstractActionController {
 
     public function indexAction() {
 
-        $TvirtebiEntity = $this->entityManager->getRepository(Tvirtebi::class);
+        $TvirtebiEntity = $this->entityManager->getRepository(\Application\Entity\Tvirtebi::class);
         $TvirtebiData = $TvirtebiEntity->findAll();
 
         return new ViewModel(["tvirtebi" => $TvirtebiData]);
